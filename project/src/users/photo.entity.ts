@@ -8,13 +8,4 @@ export class Photo {
 
   @Column({ length: 500 })
   name: string;
-
-  @Column()
-  filename: string;
-
-  @Column('int')
-  views: number;
-
-  @Column()
-  isPublished: boolean;
 }

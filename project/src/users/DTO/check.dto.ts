@@ -3,5 +3,5 @@ import { IsNotEmpty } from "class-validator";
 export class check{
 
     @IsNotEmpty()
-    title:string
+    id:string
 }

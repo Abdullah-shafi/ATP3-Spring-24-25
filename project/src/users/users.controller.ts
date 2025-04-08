@@ -1,4 +1,4 @@
-import { Body, Controller, Get, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get,Post, Param, UsePipes, ValidationPipe, Delete } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { check } from './DTO/check.dto';
 
@@ -7,12 +7,33 @@ import { check } from './DTO/check.dto';
 export class UsersController {
      constructor(private readonly userService: UsersService) {}
 
-     @Get()
+     @Post()
      @UsePipes(ValidationPipe)
-     getAbd(@Body() ab:check)
+     saveData(@Body() data)
      {
-        return ab
+        return  this.userService.saveData(data)
      }
+     
+     @Get()
+     allData()
+     {
+        return this.userService.allData()
+     }
+
+     @Get(':id')
+     getId(@Param('id')id)
+     {
+      return this.userService.getId(id)
+     }
+     @Delete('deletebyId/:id')
+     deleteId(@Param('id')id)
+     {
+      return this.userService.deleteId(id)
+
+     }
+
+     
+     
      
 
     }
